@@ -1,10 +1,12 @@
 ﻿#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <clocale>
 using namespace std;
 
 int main(){
-    cout << "\tWelcom to Guess My Number\n\n";
+    setlocale(LC_CTYPE, "rus");
+    cout << "\tДобро пожаловать в Угадай Число\n\n";
     
     srand(static_cast<unsigned int>(time(0)));
     int secretNumber = rand() % 100 + 1;
@@ -12,16 +14,16 @@ int main(){
     int guess;
 
     do{
-        cout << "Enter a guess: ";
+        cout << "Введите число: ";
         cin >> guess;
         if (guess > secretNumber)
-            cout << "Too high!\n\n";
+            cout << "Слишком много!\n\n";
         else if (guess < secretNumber)
-            cout << "Too low!\n\n";
+            cout << "Слишком мало!\n\n";
         ++tries;
     } while (guess != secretNumber);
 
-    cout << "\nThat's it! You got it in " << tries << " guesses!\n";
+    cout << "\nПоздравляю! У Вас получилось за " << tries << " попыток!\n";
 
     return 0;
 }
