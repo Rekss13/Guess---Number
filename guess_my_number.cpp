@@ -15,21 +15,25 @@ int main(){
     int min = 1;
     int max = 100;
 
+    cout << "--------------------------------------------------\n\n";
+
     do{
         cout << "Введите число (от " << min << " до " << max << "): ";
         cin >> guess;
         if (guess > secretNumber) {
             cout << "Слишком много!\n\n";
-            if (guess < max) max = guess;
+            if (guess <= max) max = guess - 1;
         }
         else if (guess < secretNumber) {
             cout << "Слишком мало!\n\n";
-            if (guess > min) min = guess;
+            if (guess >= min) min = guess + 1;
         }
         ++tries;
     } while (guess != secretNumber);
 
-    cout << "\nПоздравляю! У Вас получилось за " << tries << " попыток!\n";
+    cout << "\n--------------------------------------------------\n\n";
+    cout << "Поздравляю! У Вас получилось за " << tries << " попыток!\n\n";
+    cout << "\tИГРА ОКОНЧЕНА\n";
 
     return 0;
 }
