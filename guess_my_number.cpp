@@ -12,14 +12,20 @@ int main(){
     int secretNumber = rand() % 100 + 1;
     int tries = 0;
     int guess;
+    int min = 1;
+    int max = 100;
 
     do{
-        cout << "Введите число: ";
+        cout << "Введите число (от " << min << " до " << max << "): ";
         cin >> guess;
-        if (guess > secretNumber)
+        if (guess > secretNumber) {
             cout << "Слишком много!\n\n";
-        else if (guess < secretNumber)
+            if (guess < max) max = guess;
+        }
+        else if (guess < secretNumber) {
             cout << "Слишком мало!\n\n";
+            if (guess > min) min = guess;
+        }
         ++tries;
     } while (guess != secretNumber);
 
